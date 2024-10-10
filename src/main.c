@@ -6,40 +6,24 @@
 // The code is based on VUT FIT C Practicals
 
 
+
+//Testing various functions
+
+
 #include "types.h"
 #include <stdio.h>
-/**
- * Determine whether the provided character is alphabetic.
- * 
- * @param c character
- * 
- * @return true when the provided character `c` is alphabetic;
- *    false otherwise
- */
-
 
 bool is_in_set(int set[], int length, int value) {
-    // Iterate through the array
     for (int i = 0; i < length; i++) {
-        // Check if the current element matches the value
         if (set[i] == value) {
-            return true; // Value is found
+            return true; 
         }
     }
-    return false; // Value is not found
+    return false;
 }
 
 
 bool is_alpha(char c) {
-
-  /* 
-   * This is quite easy, just use the ASCII table
-   *
-   * ASCII table: https://en.wikipedia.org/wiki/ASCII
-   * simply said it comparing c ascii value with 'a' and 'z' or 'A' and 'Z' ascii values
-   * suppose we have char c = 'b' it's ASCII value is 98 it checks with 97 and 122 and returns true
-   * if not it returns false
-  */
 
   if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
 	return true;
@@ -47,23 +31,7 @@ bool is_alpha(char c) {
   return false;
 }
 
-/**
- * Determine whether all characters of the provided `string`
- *    (character array) are alphabetic.
- * 
- * @param string input string
- * 
- * @return true when all characters in the provided string are alphabetic;
- * 	  false otherwise
- */
 bool is_name(char string[]) {
-	/*
-		* I used while loop to iterate through the string and get it's length
-		* For loop to iterate through the string and check if the characters are alphabetic
-		
-		!The code is not the best, but it works
-	*/
-
 
 	int length = 0;
 
@@ -83,16 +51,13 @@ bool is_name(char string[]) {
 	}
 	return true;
 }
-
-
-// Function to check if a specific character is present in a string
 bool contains_char(char string[], int length, char target) {
     for (int i = 0; i < length; i++) {
         if (string[i] == target) {
-            return true; // Character found
+            return true;
         }
     }
-    return false; // Character not found
+    return false;
 }
 
 int add(int a, int b) {
