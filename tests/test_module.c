@@ -1,4 +1,12 @@
-#include "test_framework.h"
+// Made by Serhij Čepil
+// FIT VUT Student
+// https://github.com/sipxi
+// 09/10/2024
+
+// The code is based on VUT FIT C Practicals
+
+
+#include "test_case_manager.h"
 #include <stdbool.h>
 #include "../src/types.h"
 

@@ -7,50 +7,12 @@
 
 
 
-//Testing various functions
+// EXAMPLE OF MAIN.C
 
 
 #include "types.h"
 #include <stdio.h>
 
-bool is_in_set(int set[], int length, int value) {
-    for (int i = 0; i < length; i++) {
-        if (set[i] == value) {
-            return true; 
-        }
-    }
-    return false;
-}
-
-
-bool is_alpha(char c) {
-
-  if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
-	return true;
-  }
-  return false;
-}
-
-bool is_name(char string[]) {
-
-	int length = 0;
-
-	while (string[length] != '\0') {
-		length++;
-	}
-	if (length == 0) {
-		return false;
-	}
-
-
-	for(int i = 0; i < length; i++) {
-		if(!is_alpha(string[i])) {
-			return false;
-		}
-		
-	}
-	return true;
-}
 bool contains_char(char string[], int length, char target) {
     for (int i = 0; i < length; i++) {
         if (string[i] == target) {
@@ -59,12 +21,6 @@ bool contains_char(char string[], int length, char target) {
     }
     return false;
 }
-
-int add(int a, int b) {
-	return a + b;
-}
-
-
 
 #ifndef TEST_BUILD
 

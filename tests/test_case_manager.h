@@ -1,5 +1,12 @@
-#ifndef TEST_FRAMEWORK_H
-#define TEST_FRAMEWORK_H
+// Made by Serhij Čepil
+// FIT VUT Student
+// https://github.com/sipxi
+// 09/10/2024
+
+// The code is based on VUT FIT C Practicals
+
+#ifndef TEST_CASE_MANAGER_H
+#define TEST_CASE_MANAGER_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -45,6 +52,7 @@ int compare_values(TestValue expected, TestValue actual, TestType type) {
         case TYPE_STRING:
             return strcmp(expected.str_val, actual.str_val) == 0;
         default:
+            fprintf(stderr, "Unsupported type for comparison\n");
             return 0; // Unsupported type
     }
 }
@@ -77,9 +85,9 @@ void print_result(int iteration, const char *test_name, const char **inputs,
     // Format the inputs into a single string
     for (size_t i = 0; inputs[i] != NULL; i++) {
         if (i > 0) {
-            strcat(input_buffer, ", "); // Add a comma separator
+            strncat(input_buffer, ", ", sizeof(input_buffer) - strlen(input_buffer) - 1); // Add a comma separator safely
         }
-        strcat(input_buffer, inputs[i]); // Append the input
+        strncat(input_buffer, inputs[i], sizeof(input_buffer) - strlen(input_buffer) - 1); // Append the input safely
     }
 
     // Buffers for expected and actual values as strings
@@ -90,14 +98,9 @@ void print_result(int iteration, const char *test_name, const char **inputs,
     // Compare expected and actual values
     int pass = compare_values(expected, actual, type);
 
-    // Print the result with the new input format
-    if (pass) {
-        printf("Test: %d ✅ PASS: %s(test: %s) expected %s, got %s\n", 
-               iteration, test_name, input_buffer, expected_str, actual_str);
-    } else {
-        printf("Test: %d ❌ FAIL: %s(test: %s) expected %s, got %s\n", 
-               iteration, test_name, input_buffer, expected_str, actual_str);
-    }
+    // Print the result
+    printf("Test: %d %s: %s(test: %s) expected %s, got %s\n", 
+           iteration, pass ? "✅ PASS" : "❌ FAIL", test_name, input_buffer, expected_str, actual_str);
 }
 
 // Function to run a single test case
@@ -133,4 +136,4 @@ void run_test_suite(TestCase *tests, size_t test_count) {
     printf("🎉 All tests completed!\n");
 }
 
-#endif // TEST_FRAMEWORK_H
+#endif // TEST_CASE_MANAGER_H

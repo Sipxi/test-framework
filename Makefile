@@ -1,3 +1,11 @@
+# Made by Serhij Čepil
+# FIT VUT Student
+# https://github.com/sipxi
+# 09/10/2024
+
+# The code is based on VUT FIT C Practicals
+
+
 # Compiler and flags
 CC 			= gcc #! CHANGE BASED ON YOUR COMPLIER
 CFLAGS 		= -std=c11 -Wall -Wextra -Werror -pedantic
@@ -33,8 +41,6 @@ run: $(EXEC)
 
 # Run all unit tests
 test: $(TEST_EXEC)
-	@chcp 65001
-	@echo "Running all unit tests..."
 	./$(TEST_EXEC) 
 
 # Clean up compiled files
