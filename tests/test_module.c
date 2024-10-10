@@ -1,4 +1,12 @@
-#include "test_framework.h"
+// Made by Serhij Čepil
+// FIT VUT Student
+// https://github.com/sipxi
+// 09/10/2024
+
+// The code is based on VUT FIT C Practicals
+
+
+#include "test_case_manager.h"
 #include <stdbool.h>
 #include "../src/types.h"
 
@@ -13,6 +21,28 @@ TestValue test_contains_char(const char **inputs) {
     result.int_val = contains_char(string, strlen(string), target) ? 1 : 0; 
     return result;
 }
+
+
+TestValue test_is_alpha(const char **inputs) {
+    // Extract the character from inputs
+    char c = inputs[0][0];
+
+    TestValue result;
+
+    result.int_val = is_alpha(c) ? 1 : 0;
+    return result;
+}
+
+TestCase test_cases_is_alpha[] = {
+    {
+        "test is_alpha(lower)", 
+        (const char *[]){ "a", NULL },
+        { .int_val = 1 },
+        TYPE_INT,
+        test_is_alpha
+    },
+};
+
 
 // Define test cases for contains_char
 TestCase test_cases_contains_char[] = {
@@ -74,10 +104,15 @@ TestCase test_cases_contains_char[] = {
     },
 };
 
+
+
+
+
 // Main function to run the test suite for contains_char
 int main() {
     // Run the defined test cases and calculate the results
     run_test_suite(test_cases_contains_char, sizeof(test_cases_contains_char) / sizeof(TestCase));
+    run_test_suite(test_cases_is_alpha, sizeof(test_cases_is_alpha) / sizeof(TestCase));
     
     return 0; // Indicate successful execution
 }
