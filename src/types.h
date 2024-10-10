@@ -4,7 +4,9 @@
 // 09/10/2024
 
 // The code is based on VUT FIT C Practicals
+//hey
 
+//hello
 #include <stdbool.h>
 
 #ifndef TYPES_H
