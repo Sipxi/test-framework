@@ -22,6 +22,11 @@ bool contains_char(char string[], int length, char target) {
     return false;
 }
 
+
+bool is_alpha(char c) {
+	return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+}
+
 #ifndef TEST_BUILD
 
 int main() {
