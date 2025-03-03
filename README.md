@@ -22,7 +22,7 @@ This framework allows you to define test cases that include the function to test
 
 ## Installation
 
-To use the test framework, simply clone the repository.
+To use the test framework, simply clone the repository
 
 ## Files
 
